@@ -10,4 +10,9 @@ we ned to serve up the our folder to express middleware hence app.use express.st
  and for this to run npm run dev command in terminal 
  *web socket protocol-
  web sockets allow full duplex communication means a bidrectional communication wheerein a server or a client both can initiate communication 
- and with web socket ek baar client connect ho gaya to it stays forever until it wants 
+ and with web socket ek baar client connect ho gaya to it stays forever until it wants and the server sends data got from another client to another client instantly
+ we will use socket.io to make socket servers and also client side code to communicte with this server 
+ now this server is different from regular hence we ned to modify the express server accordingly with socket.io 
+ we will make a http server and pass it to our express app and instead of "app" we will use "server" hecen server.listen() and now we make a socketio ka instance and pass our http server to this 
+ io.on() jab koi event hoga to ye crow and it has 2 arg name of event and fucntion to run after that event happens and 'connection' is an event but we will not get anything unless we connect to our server hence we need to make client side code also and we will take this from the file served by socket.io server as it serves a file for clients when we initialoze it and we will include it in our index.html public folder ki and the file name is socket.io.js and hence to write this client side code we will make folder in public to store our js files 
+ we call io() in chat.js to access the server in it 
