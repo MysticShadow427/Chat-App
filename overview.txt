@@ -1,0 +1,13 @@
+chat app banayenge follow the course
+src folder for all node js scripts
+port and public directory path ko confihure karna hai 
+path is a core node module, __dirname means current folder
+we ned to serve up the our folder to express middleware hence app.use express.static
+ we will modify package .json with making a "start"script  to bootstart the app using node  
+ to agar apn ne npm run start ye likha to server start ho jaayega nice
+ and also dev dependcncies for nodemon make a dev script 
+ dev dependcncies vo rahte jo hame bas apnea app locally run karne ke liye lagte 
+ and for this to run npm run dev command in terminal 
+ *web socket protocol-
+ web sockets allow full duplex communication means a bidrectional communication wheerein a server or a client both can initiate communication 
+ and with web socket ek baar client connect ho gaya to it stays forever until it wants 
