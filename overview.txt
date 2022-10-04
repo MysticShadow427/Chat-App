@@ -25,4 +25,29 @@ socket.on() 2 args and 1st is event and the name should be same and 2nd is calba
 to send from client also we use socket.emit() when button is clicked and ye server side js code me isko apan socket.on() se listen karenge and usme count++ karke socket.emit kar denge same last vala event jo server ne bheja tha ...but this whole code is only for a single connection eg-
 ek client connec hua and button click krke coutn change kiya to jo naya count  hoga vo new connectred client ko dikhega but abhi agar pahele client ne button click karke coubt badhaya to vo bas usi user ko dikhega jisne button click kiya hence aisa na hone ke liye we do io.emit() rather than seocket.emit() n3-17-05 ka code dekho iske liye 
 ham m=form se input bhejnege usse event bhejkar message bhejneg server ko and we stop its default behaviour so after refresh???
-const message=e.target.elements.message this causes to crash ;less e is what we get from our query selector and .message is the name property of that element  
+const message=e.target.elements.message this causes to crash ;less e is what we get from our query selector and .message is the name property of that element
+broadcasting events-
+for eg if a user joins the chatroom all users will get some message that new user joined and if someone left so all will get a meessage user left
+and this message will not go to the user who joins or lefts
+so we have for this a function socket.broadcast.emit which sends a message to everybody execpt this socket ,...socket.broadcast.emit('message','a new user joined')
+hecne now we have 3 types of emits chamka kon kon se?
+now what if a client gets disconnected wehave a function called as socket.on('disconnect',()=>{
+    this func will rin after a client gets disconnected
+})
+sharing location-
+we will be sharing each other location by typing some client side javascript code by using apis ,we will be using mdn geolocation api 
+agar brosers me navigator.geolocation naame ki property run ho sakti to hi ye api run ho sakta hai 
+and then we will use .getCurrPos with a callback function with a argument position which has all the results ,now by console.logging we can check what properties do we have acces to 
+socket.on() to listennn ye mat bhulo yaar and through a callback funtion we have access to that
+*event acknowledgemt-
+means kuch hua to jisne kiya usko jiske liye kiya usse kuch feedback milna chahiye 
+abhi jo socket.emit() hai usme 3rd arg ek callback fucntionhai jo acknowledgemt show karne ke liye hai to ham kya karenge ki usme vo event success ke bad kya hoga vo likhenge and iske event listener ke callback function me 2nd arg ek function daalenge here callback naam ka and we will call that at the last and these both callback are same means ye jo hamare do functions ki hamne baat ki vo same hi hai vahi run hoga means acknowledgemt functionnrun hoga sender ke pass but jo hame arg diya na extra ka vo vahi function ha and abhi
+recievr ke event listener me jo hamne last line pe callback ko run kkiya us function me ham bohot saare argument bhi pass kar sakte and uske ham acdess jaha pe event emit kiya tha vaha pe access kar sakte and vo args jo ham bhejnege vo jaha se bheja hai vaha ke acknowledgemt function ke arg rahenege 
+now we can use this feedback mechanism for our chat validation means bad words can be excluded amd we can send a warning message and we have a npm module called bad-words for this lo man so great to have xD
+ 
+bhai yaha pe apan kya sikh rahe ki pahle  backend without gui kro and test by usning just console.log calls and then add to gui 
+
+now we will do some  aise changes ki agar send location button pe click kiya to firse nahi click kar sakta for 2 seconds aise and jo apna send message ka jo form hai usme ham jo likhte hai vo clear nahi hota to use clear karna hai aise chnages karenge 
+$ sign se kisi varibale ka naam likha means vo dom ka koi element hai
+we disabeled the button and we will enable it in our acknowledgemt  and to clear the input we will set it to empty string   and vo focus() se we will bring the cursor inside the input form 
+samwe for send location button we wil diable it and enable it in the acknowledgemt
