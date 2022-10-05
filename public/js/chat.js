@@ -4,10 +4,32 @@ const $messageForm=document.querySelector('#mf')
 const $messageFormInput=$messageForm.querySelector('input')
 const $messageFormButton=$messageForm.querySelector('button')
 const $sendLocationButton=document.querySelector('#sl')
+const $messages=document.querySelector('#messages')
+
+//templates
+const messageTemplate=document.querySelector('#message-template').innerHTML
+const locationMessageTemplate=document.querySelector('#location-message-template').innerHTML
+
+//options
+const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 
 
 socket.on('message',(message)=>{
     console.log(message)
+    const html=Mustache.render(messageTemplate,{
+        message:message.text,
+        createdAt:moment(message.createdAt).format('k:mm A')
+    })
+    $messages.insertAdjacentHTML('beforeend',html)
+})
+
+socket.on('locationMessage',(message)=>{
+    console.log(message)
+    const html=Mustache.render(locationMessageTemplate,{
+        url:message.url,
+        createdAt:moment(message.createdAt).format('k:mm A')
+    })
+    $messages.insertAdjacentHTML('beforeend',html)
 })
 
 $messageForm.addEventListener('submit',(e)=>{
@@ -44,3 +66,5 @@ $sendLocationButton.addEventListener('click',()=>{
         })
     })
 })
+
+socket.emit('join',{username,room})

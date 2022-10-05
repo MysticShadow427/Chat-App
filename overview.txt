@@ -51,3 +51,27 @@ now we will do some  aise changes ki agar send location button pe click kiya to 
 $ sign se kisi varibale ka naam likha means vo dom ka koi element hai
 we disabeled the button and we will enable it in our acknowledgemt  and to clear the input we will set it to empty string   and vo focus() se we will bring the cursor inside the input form 
 samwe for send location button we wil diable it and enable it in the acknowledgemt
+
+rendering messages-
+we want to show these messages on the webpqge ratther than on console so we will use a library called mustach that helps to connect html and js code to render on the webspage means dynamic content dikhayega 
+abhi uske liye index.html me 1 div banaya jisme dynamic content daalenge and fir ek script banaya jisme notice krna js nahi balki html hai 
+and now we will go to chat.js to render this in the socket.on('message' event vala code)
+inertAdjacemt html-helps to add more html other than out html there and 1st arg is position where to insert 4 pos hai 
+means yaha apn ne kya kiya ki kisi or div element ka code kisi dusre div element me daal diya and apan ne message event me likha hai means jab jab ham kuch to mess likhke submit karenge to vo vaha upar dynamically add hote rahega ....ok this was a good step now remember {{}} and hbs files here we not use hbs but mustach so jo bhi {{}} ikse andar likhenge vo aayega nice!,so index.html me {{}} dalo and fir chat.js me mustach.render me 2nd arg daalo and vo ek object rahega to iske key value pairs me se keys rahege jo hame template se access karenge and vo kya rahegi means value kya rahegi jo hamara arg hai function ka jo ham server se bhej rahe vo jisko apan ne message naam diya 
+
+abhi ham jab location fire off karenge to vo text aa raha but hme location aisa nahi chaiye hence we need to do somen restructuring by making new event and rebdering  a new template and url in the {{}} and _blank so new tab me khulega and follow same procedure 
+
+ham ek hi event ko baar bar emit kar sakte jaise hamne message event ko kiya hai but usko fir ek hi code se sambhalna padega ofc 
+
+*working with time-
+we will use date object in javascript to generate current dates here ,and we will send objects rather than sending string messages but it is a hectic task and repeation of code hence we make a new folder utils and usme new file messages.js and vaaha se function export ksreneg and also we need to make changes in chat.js as now message is a object 
+now we will use librarry called moments to works with timestamps
+
+*join page-
+now as per naming conventionn index is first page so index.html will be bjoin page and chat.html will be chatroom
+form action se page chnage hota and isse apni query strig auto generate hui nice an we will use that 
+
+rooms in socket.io-
+location.search se hame kisi bhi url ki query string ka access milega and further refined by the qs library we included we can filter it and then we will make a new emit to emit join
+socket.join is a special function that is used on server side to k=join a room 
+io.to.emit() emits for group of people joined only to that room ,same for socket.broadcast.to.emit() all in the room except that person 
