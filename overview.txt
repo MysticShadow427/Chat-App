@@ -75,3 +75,27 @@ rooms in socket.io-
 location.search se hame kisi bhi url ki query string ka access milega and further refined by the qs library we included we can filter it and then we will make a new emit to emit join
 socket.join is a special function that is used on server side to k=join a room 
 io.to.emit() emits for group of people joined only to that room ,same for socket.broadcast.to.emit() all in the room except that person 
+we will make new file users.js to work with user and their functions
+remove user to smj gaya na kya use kiya 
+are ye jo user.js ,me jodunction baba rahe vo purre logic hai kuch bada code nahi hai "backend" ka 
+
+join event me addUser fucntion implement karenge and id hae socket.id se hi aayegi,now will provide acknowledgemt in the join function to give some errors so we can notify if the user couldnot join  
+
+kaha se kya aa raha ye deko konsa arg objecthia kaise destructuring karna hai and kaha us object ke properties use kane hai 
+
+disconnect event me remove user kareneg 
+
+chat.js me join event ke acknowledgemt me apan aisa code likhenge ki agar kuch error aaya to ham notify crownge
+location.href se ham redirect kr sakte
+ 
+
+sending messages to room-
+hamne vo user object ko modify karke usme username dala messages.js me and usse ham user ka username pata kareneg and now modifying chat.js and chat.html 
+
+sab ek hi io.connect pe ho raha hai lund aadmi e-led ko badal 
+
+rendering userlist-
+emmiting a new event from server for sending userlist when a user joins or leaves 
+making a new sidebar te,mplate to show users and to show dynamic arrays we use #array_name  and /array_name ye iskwe bichme rakho 
+
+last element child gives the most recent element added 
